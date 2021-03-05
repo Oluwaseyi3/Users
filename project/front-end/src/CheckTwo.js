@@ -6,14 +6,14 @@ import {UserContext} from "./context/UserContext.js"
 import UseLocalStorageState from "./useLocalStorageState.js"
 import { setAuthentication } from "./authStorage.js";
 
-const initialState = {
+export const initialState = {
     error: "",
     image: {}
 }
 
 
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
     switch(action.type){
       case "FETCH_SUCCESS":
           return {
@@ -31,9 +31,9 @@ const reducer = (state, action) => {
     }
 }
 
-export default function CheckTwo() {
+export default function CheckTwo(props) {
     const { userData, setUserData} = useContext(UserContext);
-    const [userInfo, setUserInfo] = UseLocalStorageState("userId", userData)
+    // const [userInfo, setUserInfo] = UseLocalStorageState("userId", userData)
 
     const [state, dispatch] = useReducer(reducer, initialState)
   
@@ -77,7 +77,7 @@ useEffect(()=> {
 
     return (
      <div>
-      <img src={state.image.imageUrl} />
+       <img src={state.image.imageUrl}  />
      </div>
     )
 }

@@ -8,8 +8,8 @@ import Home from "./Home.js"
 import Login from "./Login.js"
 import Account from "./Account.js";
 import Register from "./Register.js"
-import ButtonAppBar from "./Navbar.js"
-import Check from "./check.js";
+import Navbar from "./Navbar.js"
+
 import CheckTwo from "./CheckTwo.js";
 
 
@@ -23,11 +23,11 @@ function App() {
   return (
     <>
    <UserProvider>
-    <ButtonAppBar/>
+    <Navbar/>
  
      <Switch>
-       <Route exact path="/" render={() => <Home/>}/>
-       <Route exact path="/Check" render={() => <Check/>}/>
+       <Route exact path="/home" render={() => <Home/>}/>
+
        <Route exact path="/CheckTwo" render={() => <CheckTwo/>}/>
        <Route exact path="/Login" render={() => <Login/>}/>
        <Route exact path="/Register" render={() => <Register/>}/>

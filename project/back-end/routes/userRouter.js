@@ -116,7 +116,8 @@ router.post("/register", async (req, res) => {
     
     res.json({
       displayName: user.displayName,
-      id: user._id
+      id: user._id,
+      imageUrl: user.imageUrl
     });
   })
 

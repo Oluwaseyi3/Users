@@ -18,6 +18,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles/FormStyles";
 import axios from "axios";
 
+import UseLocalStorageState from "./useLocalStorageState.js"
+
  function Register(props) {
   const { classes } = props;
   const [email, setEmail]= useState();
@@ -25,8 +27,9 @@ import axios from "axios";
   const [passwordCheck, setPasswordCheck]= useState();
   const [displayName, setDisplayName]= useState();
 
-  const { setUserData} = useContext(UserContext);
+  const { userData, setUserData} = useContext(UserContext);
   const history = useHistory();
+  const [userInfo, setUserInfo2] = UseLocalStorageState("userId", userData)
 
   const submit = async (e) => {
      e.preventDefault();
@@ -41,7 +44,8 @@ import axios from "axios";
        user: loginRes.data.user
      })
      localStorage.setItem("auth-token", loginRes.data.token)
-     history.push("/");
+     setUserInfo2(loginRes.data.user.id)
+     history.push("/home");
   }
   
     return (
@@ -52,7 +56,7 @@ import axios from "axios";
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography variant='h5'>Sign In</Typography>
+          <Typography variant='h5'>Register</Typography>
           
           <form className={classes.form} onSubmit={submit}>
             <FormControl margin='normal' required fullWidth>

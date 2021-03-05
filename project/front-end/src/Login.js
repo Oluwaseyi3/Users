@@ -19,6 +19,7 @@ import styles from "./styles/FormStyles";
 import axios from "axios";
 import ErrorNotice from "./error/ErrorNotice.js"
 import { setAuthentication } from "./authStorage.js";
+
 import UseLocalStorageState from "./useLocalStorageState.js"
 
 
@@ -53,7 +54,7 @@ import UseLocalStorageState from "./useLocalStorageState.js"
     
     setUserInfo(loginRes.data.user)
     setUserInfo2(loginRes.data.user.id)
-    history.push("/CheckTwo");
+    history.push("/home");
   } catch(err){
     err.response.data.msg && setError(err.response.data.msg)
   }

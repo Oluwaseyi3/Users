@@ -10,11 +10,13 @@ import Input from "@material-ui/core/Input";
 import axios  from "axios"
 import withStyles from "@material-ui/core/styles/withStyles";
 import styles from "./styles/FormStyles";
+import { useHistory} from "react-router-dom"
 
 
  function Account(props) {
 
     const { userData} = useContext(UserContext);
+    const history = useHistory();
     const { classes } = props;
     
 // const url = "	https://api.cloudinary.com/v1_1/seyi-codes" 
@@ -22,6 +24,7 @@ import styles from "./styles/FormStyles";
 const [image, setImage] = useState("");
 const [fileData, setFileData] = useState("");
 const [images, setFile] = useState("");
+const home= () => history.push("/home");
 
 const handleFileChange= ({target}) => {
  
@@ -45,11 +48,12 @@ const result = await axios.post(`http://localhost:5000/users/upload/${userData.u
 }
   
 }
-
+const loggedId = localStorage.getItem("userId")
+const foundUser = JSON.parse(loggedId)
     return(
      <div>
-      
-{userData.user ?
+  
+{foundUser ?
     (
     <>
      <h1>Set up your Profile</h1>
@@ -76,8 +80,9 @@ const result = await axios.post(`http://localhost:5000/users/upload/${userData.u
             </Button>
        
         </form>
+      
 
-    
+        <Button color="inherit" onClick={home}>Back to home</Button>
     </>
 
 
