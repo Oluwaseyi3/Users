@@ -35,6 +35,14 @@ app.use("/users", require("./routes/userRouter"))
 
 const PORT = process.env.PORT || 5000;
 
-    
+    // ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.listen(PORT, () => console.log(`The Server has started on port: ${PORT}`));
 
