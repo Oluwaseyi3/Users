@@ -160,7 +160,9 @@ router.post("/upload/:id", parser.single("image"),  async (req, res) => {
 
 
 
-
+router.get("*/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 
 
