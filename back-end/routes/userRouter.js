@@ -10,6 +10,9 @@ const parser = require("../middleWare/cloudinary.config");
 
 
 
+router.get("*/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 router.post("/register", async (req, res) => {
     try {
@@ -160,9 +163,6 @@ router.post("/upload/:id", parser.single("image"),  async (req, res) => {
 
 
 
-router.get("*/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 
 
