@@ -33,7 +33,12 @@ app.use("/users", require("./routes/userRouter"))
 
 
 
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
+let port = process.env.PORT;
+
+if (port == null || port == "") {
+    port = 3000;
+  }
 
     // ... other app.use middleware 
 app.use(express.static(path.join(__dirname, "client", "build")))
@@ -44,5 +49,12 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(PORT, () => console.log(`The Server has started on port: ${PORT}`), this.address().port, app.settings.env);
+app.listen(port, () => console.log(`The Server has started on port: ${PORT}`), this.address().port, app.settings.env);
 
+
+
+
+
+// app.listen(port, function(){
+//  console.log("Server has started on Port 3000")
+// });
