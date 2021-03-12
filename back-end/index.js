@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(port, () => console.log(`The Server has started on port: ${PORT}`), this.address().port, app.settings.env);
+app.listen(port, () => console.log(`The Server has started on port: ${PORT}`));
 
 
 
